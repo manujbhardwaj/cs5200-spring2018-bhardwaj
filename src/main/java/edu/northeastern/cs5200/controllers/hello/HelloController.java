@@ -5,6 +5,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,6 +21,11 @@ public class HelloController {
     
     @Autowired
     HelloRepository helloRepository;
+    
+    @RequestMapping("/api/hello/sendemail")
+    public void sendEmail() {
+    	Mailer.send("bhardwaj.ma@husky.neu.edu","Manuj@90","themanujbhardwaj@gmail.com","hello javatpoint","How r u?");
+    }
     
     @RequestMapping("/api/hello/insert")
     public HelloObject insertHelloObject() {
